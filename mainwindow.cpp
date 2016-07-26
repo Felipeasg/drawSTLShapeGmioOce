@@ -115,7 +115,7 @@ void MainWindow::on_drawSTL()
     BRep_Builder CompoundBuilder;
     CompoundBuilder.MakeCompound(ResultShape);
 
-    const char* filepath = "Big_ref.stl";
+    const char* filepath = "./stlfile.stl";
 
     Handle_StlMesh_Mesh mesh = new StlMesh_Mesh;
     gmio_stl_mesh_creator_occmesh mesh_creator(mesh);

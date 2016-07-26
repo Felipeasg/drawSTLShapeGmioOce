@@ -15,6 +15,8 @@
 
 #include <AIS_Shape.hxx>
 
+#include <QApplication>
+
 OccView::OccView(QWidget *parent)
     : QWidget(parent)
 {
@@ -100,7 +102,17 @@ void OccView::DrawShape(TopoDS_Shape shape)
 {
     Handle(AIS_Shape) anAisShape = new AIS_Shape(shape);
 
+    mContext->SetDisplayMode(anAisShape, 0, false );
     mContext->Display(anAisShape);
+    mView->Rotate(80);
+
+//    QApplication::setOverrideCursor( Qt::WaitCursor );
+//    for( mContext->InitCurrent(); mContext->MoreCurrent(); mContext->NextCurrent() )
+//        mContext->SetDisplayMode( mContext->Current(), 0, false );
+//    mContext->UpdateCurrentViewer();
+
+//    QApplication::restoreOverrideCursor();
+
     mView->FitAll();
 }
 
